@@ -15,11 +15,15 @@
                     <h5 class="card-title">{{$post->post_title}}</h5>
                     <h6>{{$post->category}}</h6>
                     
-                    <p> 
+                    
+                    <p>
                         @foreach ($post->categories as $category)
+                        <a  href="{{route('categories.show',$category)}}"> 
                             <strong>Category: </strong> <em class="text-uppercase">{{$category->name}}</em>
+                        </a>
                         @endforeach
                     </p>
+                    
                     
                     <div class="links d-flex justify-content-between">
                         
