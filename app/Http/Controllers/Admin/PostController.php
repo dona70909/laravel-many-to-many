@@ -143,7 +143,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
+        /* //# FIRST "DELETE FROM THE PARENT TABLE "  */
+        $post->categories()->detach();
+        
+         /* //# THAN "DELETE FROM THE CHILD TABLE "  */
+        $post->delete(); 
         return redirect()->route('posts.index')
         ->with('deleted-message', "The " . $post->post_title . " post has been deleted.");
     }
