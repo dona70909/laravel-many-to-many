@@ -69,7 +69,7 @@ class PostController extends Controller
         $post->save();
 
         $post->categories()->sync($data['category']);
-        
+
         /* redirect to the show of the new Post update */
         return redirect()->route('posts.show',["post" => $post]);
     }
@@ -80,9 +80,8 @@ class PostController extends Controller
      * @param  int  Post post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post,Request $request)
+    public function show(Post $post)
     {
-        dump($request);
         return view('admin.posts.show',compact('post'));
     }
     /**
