@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Post;
+use App\Model\Category;
 
 class PostController extends Controller
 {
@@ -16,8 +17,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-
-        return view('admin.posts.index',compact('posts'));
+        /* $categories = Category::all();  */       
+        return view('admin.posts.index',["posts" => $posts]);
     }
 
     /**
@@ -27,7 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        dump($categories);
+        return view('admin.posts.create',["categories" => $categories]);
     }
 
     /**
@@ -59,6 +62,7 @@ class PostController extends Controller
         $post->post_title = $data['post_title'];
         $post->post_text = $data['post_text'];
         $post->post_img = $data['post_title'];
+        $post->categories()->sync($data['categories']);
         $post->save();
 
         /* redirect to the show of the new Post update */
@@ -114,7 +118,8 @@ class PostController extends Controller
             $post->post_title = $data['post_title'];
             $post->post_text = $data['post_text'];
             $post->post_img = $data['post_title'];
-            $post->update();
+            $post->categories()->sync($data['category']);
+            $post->save();
     
             /* redirect to the show of the new Post update */
             return redirect()->route('posts.show',compact('post'))

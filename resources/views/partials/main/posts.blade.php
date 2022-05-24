@@ -1,4 +1,5 @@
 <section class="container-fluid">
+   
     <div class="row d-flex justify-content-center wrapper-posts">
         <div class="col-12">
             @if(session('deleted-message'))
@@ -12,6 +13,14 @@
                 <img class="card-img-top img-fluid py-2" src="{{$post->post_img}}" alt="This image should respresent:  {{$post->post_title}}">
                 <div class="card-body">
                     <h5 class="card-title">{{$post->post_title}}</h5>
+                    <h6>{{$post->category}}</h6>
+                    
+                    <p> 
+                        @foreach ($post->categories as $category)
+                            <strong>Category: </strong> <em class="text-uppercase">{{$category->name}}</em>
+                        @endforeach
+                    </p>
+                    
                     <div class="links d-flex justify-content-between">
                         
                         <button type="button" class="btn btn-info">
