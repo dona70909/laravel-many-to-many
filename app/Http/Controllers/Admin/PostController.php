@@ -17,8 +17,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        /* $categories = Category::all();  */       
-        return view('admin.posts.index',["posts" => $posts]);
+        $categories = Category::all();        
+        return view('admin.posts.index',["posts" => $posts,"categories" => $categories]);
     }
 
     /**
@@ -28,8 +28,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        
+        $categories = Category::all(); 
+        //$categories = Category::where('name', 1)->get();
+
         return view('admin.posts.create',["categories" => $categories]);
     }
 
@@ -41,9 +42,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+
+        
         /* First i get the request */
         $data = $request->all();
-
+        
         /* check the request values from the input */
         $request->validate(
             [
@@ -62,11 +65,13 @@ class PostController extends Controller
         $post->post_title = $data['post_title'];
         $post->post_text = $data['post_text'];
         $post->post_img = $data['post_title'];
-        $post->categories()->sync($data['category_id']);
+        
         $post->save();
 
+        $post->categories()->sync($data['category']);
+        
         /* redirect to the show of the new Post update */
-        return redirect()->route('posts.show',$post);
+        return redirect()->route('posts.show',["post" => $post]);
     }
 
     /**
@@ -75,8 +80,9 @@ class PostController extends Controller
      * @param  int  Post post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Post $post,Request $request)
     {
+        dump($request);
         return view('admin.posts.show',compact('post'));
     }
     /**
@@ -118,7 +124,7 @@ class PostController extends Controller
             $post->post_title = $data['post_title'];
             $post->post_text = $data['post_text'];
             $post->post_img = $data['post_title'];
-            $post->categories()->sync($data['category']);
+           /*  $post->categories()->sync($data['category']); */
             $post->save();
     
             /* redirect to the show of the new Post update */

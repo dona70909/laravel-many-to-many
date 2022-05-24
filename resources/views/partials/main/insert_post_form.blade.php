@@ -1,5 +1,6 @@
 <section class="container-fluid">
     <div class="row justify-content-center p-5">
+       
         <div class="col-8">
             <form action="{{route('posts.store')}}" method="post">
                 @csrf
@@ -26,7 +27,7 @@
 
                 <div class="form-group">
                     
-                    <select class="form-select multiple"  name="category_id" >
+                    <select class="form-select" name="category" >
                         <option value="">Select category</option>
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
