@@ -40,6 +40,11 @@
                         <a class="nav-link mx-2" href="{{route('categories.index')}}"> Categories </a>
                     </li>
 
+                    <li class="nav-item">
+                        {{-- % Route to see all the categories  --}}
+                        <a class="nav-link mx-2" href="{{route('categories.create')}}">New Category </a>
+                    </li>
+
                     <li class="nav-item"> 
                         <div aria-labelledby="navbarDropdown">
                             <a class="ms-2" href="{{ route('logout') }}"

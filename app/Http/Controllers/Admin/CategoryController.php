@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -37,29 +37,50 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* check the request values from the input */
+        $request->validate(
+            [
+                'name' => "required|min:5|unique:App\Model\Category,name",
+            ],
+
+            [
+                "required" => "Not valid :attribute.",
+                "unique" => "This category already exists",
+            ]
+        );
+
+            /* get the request if valid */
+        $data = $request->all();
+
+        $newCategory = new Category();
+        $newCategory->name = $data['name'];
+        $newCategory->name = $data['color'];
+        $newCategory->save();
+
+        return redirect()->route('categories.show', $newCategory);
     }
+    
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        //
+        return view('admin.categories.show',compact('category'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Category $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.categories.create',compact('category'));
     }
 
     /**
@@ -69,9 +90,28 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+         /* check the request values from the input */
+        $request->validate(
+            [
+                'name' => "required|min:5|unique:App\Model\Category,name",
+            ],
+
+            [
+                "required" => "Not valid :attribute.",
+                "unique" => "This category already exists",
+            ]
+        );
+
+            /* get the request if valid */
+        $data = $request->all();
+
+        $category->name = $data['name'];
+        $category->name = $data['color'];
+        $category->save();
+
+        return redirect()->route('categories.show', $category);
     }
 
     /**

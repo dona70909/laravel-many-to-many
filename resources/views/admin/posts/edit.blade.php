@@ -7,5 +7,5 @@
 @endsection
 
 @section('content')
-    @include('partials.main.insert_post_edit')
+    @include('partials.main.edit_post_form')
 @endsection

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title','Create-Post')
+@section('title','Edit-Category')
 
 @section('header-content')
     @include('partials.header.header_nav')
 @endsection
 
 @section('content')
-    @include('partials.main.insert_post_form')
+    @include('partials.main.edit_category_form')
 @endsection
