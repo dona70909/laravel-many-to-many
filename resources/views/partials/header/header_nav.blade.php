@@ -1,6 +1,6 @@
 <section class="container-fluid">
     <div class="row">
-        <nav class="bg-primary">
+        <nav class="bg-primary text-uppercase fw-bolder">
             <ul class="d-flex list-unstyled align-items-baseline py-2">
                 <li class="nav-item">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -28,16 +28,16 @@
                     </li>
                     <li class="nav-item">
                         {{-- # link to the form create --}}
-                        <a class="nav-link mx-2" href="{{route('posts.create')}}">Insert new Post</a>
+                        <a class="nav-link mx-2" href="{{route('posts.create')}}"> New Post</a>
                     </li>
                     <li class="nav-item">
                         {{-- Route to see all the posts  --}}
-                        <a class="nav-link mx-2" href="{{route('posts.index')}}"> Show all your posts </a>
+                        <a class="nav-link mx-2" href="{{route('posts.index')}}"> Posts </a>
                     </li>
 
                     <li class="nav-item">
                         {{-- % Route to see all the categories  --}}
-                        <a class="nav-link mx-2" href="{{route('categories.index')}}"> Show all posts categories </a>
+                        <a class="nav-link mx-2" href="{{route('categories.index')}}"> Categories </a>
                     </li>
 
                     <li class="nav-item"> 
