@@ -21,7 +21,7 @@
                     @endif
                     @else
                     <li class="nav-item">
-                        {{-- %class for toggle-- nav-item dropdown nav-link dropdown-toggle --}}
+                        {{-- % class for toggle-- nav-item dropdown nav-link dropdown-toggle --}}
                         <a id="navbarDropdown" class="mx-2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             Welcome  {{ Auth::user()->name }}
                         </a>
@@ -33,6 +33,11 @@
                     <li class="nav-item">
                         {{-- Route to see all the posts  --}}
                         <a class="nav-link mx-2" href="{{route('posts.index')}}"> Show all your posts </a>
+                    </li>
+
+                    <li class="nav-item">
+                        {{-- % Route to see all the categories  --}}
+                        <a class="nav-link mx-2" href="{{route('categories.index')}}"> Show all posts categories </a>
                     </li>
 
                     <li class="nav-item"> 
