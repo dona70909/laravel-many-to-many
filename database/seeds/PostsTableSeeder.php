@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Model\Post;
 use Faker\Generator as Faker;
+use App\Model\Category;
+use App\Model\Post;
 
-class PostSeeder extends Seeder
+class PostsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -22,3 +23,6 @@ class PostSeeder extends Seeder
         }
     }
 }
+
+
+
