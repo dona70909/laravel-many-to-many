@@ -1,8 +1,10 @@
 <section class="container-fluid">
     <div class="row justify-content-center p-5">
         <div class="col-8">
-            <form action="{{route('categories.store')}}" method="POST">
+            <form action="{{route('categories.update',$category)}}" method="POST">
                 @csrf
+
+                @method('PUT')
 
                 <div class="form-group">
                     <label for="name">Category Name</label>
