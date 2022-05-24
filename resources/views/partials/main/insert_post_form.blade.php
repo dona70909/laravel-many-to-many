@@ -23,14 +23,10 @@
                     <input type="text" class="form-control" id="thumb" name="post_img" placeholder="img">
                 </div>
 
-                <div class="form-group">
-                    <label for="img"> Upload image </label>
-                    <input type="text" class="form-control" id="thumb" name="post_img" placeholder="img">
-                </div>
 
                 <div class="form-group">
                     
-                    <select class="form-select multiple"  name="categories[]" aria-label="Default select example">
+                    <select class="form-select multiple"  name="category_id" >
                         <option value="">Select category</option>
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>

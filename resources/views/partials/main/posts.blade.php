@@ -1,5 +1,5 @@
 <section class="container-fluid">
-   
+
     <div class="row d-flex justify-content-center wrapper-posts">
         <div class="col-12">
             @if(session('deleted-message'))

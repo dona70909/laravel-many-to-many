@@ -29,7 +29,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
-        dump($categories);
+        
         return view('admin.posts.create',["categories" => $categories]);
     }
 
@@ -62,11 +62,11 @@ class PostController extends Controller
         $post->post_title = $data['post_title'];
         $post->post_text = $data['post_text'];
         $post->post_img = $data['post_title'];
-        $post->categories()->sync($data['categories']);
+        $post->categories()->sync($data['category_id']);
         $post->save();
 
         /* redirect to the show of the new Post update */
-        return redirect()->route('admin.show',$post);
+        return redirect()->route('posts.show',$post);
     }
 
     /**

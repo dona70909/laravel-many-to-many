@@ -15,6 +15,13 @@
                 <p class="card-text">
                     {{$post->post_text}}
                 </p>
+                <p>
+                    @foreach ($post->categories as $category)
+                    <a  href="{{route('categories.show',$category)}}"> 
+                        <strong>Category: </strong> <em class="text-uppercase">{{$category->name}}</em>
+                    </a>
+                    @endforeach
+                </p>
                 <a href="{{route('posts.edit',$post)}}" class="btn btn-primary">Edit </a>
             </div>
         </div>
