@@ -18,6 +18,16 @@
                         <div id="title_error" class="alert alert-danger" >{{ $message }}</div>
                     @enderror
                 </div>
+                <div class="form-group">
+                    <select class="form-select" name="category">
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}"
+                                @if ($post->categories[0]->id === $category->id ) selected @endif>
+                                {{$category->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
 
                 <div class="form-group">
                     <label for="img"> Upload image </label>

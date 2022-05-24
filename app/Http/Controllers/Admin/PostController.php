@@ -92,7 +92,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit',compact('post'));
+        $categories = Category::all(); 
+        //$categories = Category::where('name', 1)->get();
+        return view('admin.posts.edit',["post" => $post, "categories" => $categories]);
     }
 
     /**
@@ -123,8 +125,10 @@ class PostController extends Controller
             $post->post_title = $data['post_title'];
             $post->post_text = $data['post_text'];
             $post->post_img = $data['post_title'];
-           /*  $post->categories()->sync($data['category']); */
+
             $post->save();
+
+            $post->categories()->sync($data['category']); 
     
             /* redirect to the show of the new Post update */
             return redirect()->route('posts.show',compact('post'))
