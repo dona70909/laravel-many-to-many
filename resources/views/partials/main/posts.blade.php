@@ -10,7 +10,7 @@
         </div>
         @foreach ($posts as $post)
             <div class="card col-3">
-                <img class="card-img-top img-fluid py-2" src="{{$post->post_img}}" alt="This image should respresent:  {{$post->post_title}}">
+                <img class="card-img-top img-fluid py-2" src="{{$post->post_img}}" alt="This image should represent:  {{$post->post_title}}">
                 <div class="card-body">
                     <h5 class="card-title">{{$post->post_title}}</h5>
                     <h6>{{$post->category}}</h6>
